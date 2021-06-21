@@ -1,0 +1,10 @@
+version: "3"
+services:
+  lab:
+    image: "neloe/streaming-data-lab:F21"
+    ports:
+      - "8888:8888"
+  rabbitmq:
+    image: "rabbitmq"
+    environment:
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log [{console,[{level,warning}]}]
