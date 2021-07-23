@@ -1,0 +1,104 @@
+<!doctype html>
+<!-- from https://www.sitepoint.com/a-basic-html5-template/ -->
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Testing Software Installation</title>
+  <meta name="description" content="Testing Software Installation">
+  <meta name="author" content="Nathan Eloe">
+
+  <meta property="og:title" content="Testing Software Installation">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Guided Programming Assignment.">
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="jupyter-lab.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel='stylesheet' href='cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css'>
+
+
+
+</head>
+
+<body>
+  <!-- your content here... -->
+  <div class='container'>
+    <h1>Testing Software Installation</h1>
+    <h2>44-671: Streaming Data</h2>
+
+    <ol>
+      <li> Complete the installation of Docker and download the required files from the course website. Put the <code>.yml</code> file in a directory you can easily find (I chose <code>Documents/streaming-data</code>)</li>
+      <li> Open a terminal window in the directory you downloaded the <code>docker-compose.yml</code> file</li>
+      <ul>
+        <li> Windows quicktip: go to the folder in the file explorer, type <code>powershell</code> in the address bar, and hit enter</li>
+      </ul>
+      <li> Run the command <code>docker-compose up</code> (type the command in the terminal and hit enter)</li>
+      <ul>
+        <li> Note: On Windows and MacOS, you'll be able to start the service through Docker Desktop for future assignments; you will be provided more information on how to start and stop the services when necessary</li>
+      </ul>
+      <li> Open a web browser and navigate to <a href='http://localhost:8888/lab'>http://localhost:8888/lab</a></li>
+      <ul>
+        <li> Note: the Docker containers are designed to not require a username/password or token. This is not a secure practice; it is recommended you only have the docker application started when doing assignments and stop the application when you
+          are finished.</li>
+      </ul>
+      <li> You should see a window that looks like this:</li>
+      <img style='width:50%' src='jupyterlab.PNG' alt='JupyterLab Main Interface' />
+      <ul>
+        <li> Note: you may see other files in the left hand pane; that is acceptable as they may be used later in the course</li>
+      </ul>
+      <li> In the right hand pane, under "Notebook" select the Python 3 Button. You should be greeted with a window that looks like this:</li>
+
+      <img style='width:50%' src='new_notebook.PNG' alt='JupyterLab with a new notebook' />
+
+      <li> The top box in the right hand pane is a \emph{cell}; we will create multiple cells in Python notebooks through the duration of this course. In the top cell write the following code (type it out; do NOT copy and paste):</li>
+      <pre><code>print('Hello world!')
+print('My name is &#60;name&#62;')
+</code></pre>
+      but replace <code>&#60;name&#62;</code> with your name. Run the cell either by pressing the triangle button at the top of the screen or by holding Shift and pressing Enter. The result should look similar to:
+      <img style='width:50%' src='hello_world.PNG' alt='Result of running Hello World' />
+
+      <li> Determine the name of your RabbitMQ instance</li>
+      <ul>
+        <li> Windows/MacOS: Open Docker Desktop, navigate to the Containers/Apps tab. You should see an app running (it may have a different name different for you)</li>
+
+        <img style='width:90%' src='docker-desktop.PNG' alt='Docker Desktop Interface' />
+
+        <li> Linux: Run <code>docker-compose ps</code> from the directory containing the <code>docker-compose.yml</code> file. You should see output like:</li>
+
+        <img style='width:90%' src='docker-compose-ps.PNG' alt='Output of docker compose ps' />
+
+      </ul>
+      For me, the RabbitMQ instance is named <code>streaming-data\_rabbitmq\_1</code>; your name may differ. Use the instance name you see on your computer for the next step.
+      <li> In the new cell that was created at the bottom of the python notebook, write the following code (substituting <code>localhost</code> with the hostname you determined in the previous step:</li>
+      <pre><code>import pika
+
+connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+channel = connection.channel()
+print('Connection completed')
+</code></pre>
+      Run the cell as you did above. The resulting output should look like (I closed the files tab so you could see all of the code):
+
+      <img style='width:50%' src='successful-connect.PNG' alt='Result of running connection code' />
+
+      If all goes well, you should get no errors (usually highlighted in red) and the message ``Connection Completed''. If you receive errors use your favorite search engine or contact your instructor to help in troubleshooting.
+      <li> Export your notebook: In the file tab in JupyterLab, go to ``Export Notebook As...'' and choose PDF. It should download a file (possibly named <code>Untitled.pdf</code> unless you changed the name of the notebook. Ensure that the contents
+        of the PDF look like the code on your screen and submit the PDF to the course website.</li>
+
+      <img style='width:50%' src='export.PNG' alt='' />
+
+    </ol>
+  </div>
+  <script src='highlight.min.js'></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
