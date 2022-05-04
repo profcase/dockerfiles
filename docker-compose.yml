@@ -1,7 +1,7 @@
 version: "3"
 services:
   lab:
-    image: "neloe/streaming-data-lab:F21"
+    image: "neloe/streaming-data-lab:multiarch"
     ports:
       - "8888:8888"
   rabbitmq:
