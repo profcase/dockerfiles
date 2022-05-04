@@ -86,10 +86,14 @@ print('Connection completed')
       <img style='width:50%' src='successful-connect.PNG' alt='Result of running connection code' />
 
       If all goes well, you should get no errors (usually highlighted in red) and the message ``Connection Completed''. If you receive errors use your favorite search engine or contact your instructor to help in troubleshooting.
-      <li> Export your notebook: In the file tab in JupyterLab, go to ``Export Notebook As...'' and choose PDF. It should download a file (possibly named <code>Untitled.pdf</code> unless you changed the name of the notebook. Ensure that the contents
-        of the PDF look like the code on your screen and submit the PDF to the course website.</li>
+      <li> Export your notebook: You can do this one of two ways.
+        <ul>
+          <li><b>Option 1:</b> Add a code cell with the following code: <code>!jupyter nbconvert --to html name_of_notebook.ipynb</code> (replacing name_of_notebook.ipynb with the filename of the notebook you are working in).  Eventually the html file will appear in the pane to the left and you can download it (Right click it and select Download). 
+          <li><b>Option 2:</b> In the file tab in JupyterLab, go to ``Export Notebook As...'' and choose HTML. It should download a file (possibly named <code>Untitled.html</code> unless you changed the name of the notebook. Ensure that the contents
+        of the html look like the code on your screen and submit the PDF to the course website.</li>
 
       <img style='width:50%' src='export.PNG' alt='' />
+        </ul>
 
     </ol>
   </div>
